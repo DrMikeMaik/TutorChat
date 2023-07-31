@@ -128,6 +128,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# Recordings
+*.mp3
+*.wav
+
+# API keys
+*key.txt
+
 # Spyder project settings
 .spyderproject
 .spyproject
