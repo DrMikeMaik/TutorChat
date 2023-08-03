@@ -4,6 +4,7 @@ import queue
 import sounddevice as sd
 import soundfile as sf
 import numpy as np
+from pathlib import Path
 from pydub import AudioSegment
 from pydub.playback import play
 from utils import print_colored
@@ -35,40 +36,13 @@ def text_to_speech(text, voice_id):
         print('Error:', response.text)
 
 
-def record_and_transcribe(fs=44100):
-    print('Recording...')
+def transcribe(audio, state=""):
+    myfile = Path(audio)
+    myfile = myfile.rename(myfile.with_suffix('.wav'))
 
-    # Define a callback function to be called by SoundDevice
-    def callback(indata, frames, time, status):
-        vol_norm = np.linalg.norm(indata) * 10
-        # print('Recording volume:', vol_norm)
-        q.put(indata.copy())
-
-    # Create a queue to hold the recorded chunks
-    q = queue.Queue()
-
-    # Create a stream to record audio
-    stream = sd.InputStream(callback=callback, channels=1, samplerate=fs)
-    with stream:
-        # Wait for a keyboard interrupt to stop recording
-        print('Press Ctrl+C to stop recording')
-        try:
-            while True:
-                pass
-        except KeyboardInterrupt:
-            print('Recording complete.')
-
-    # Process the recorded chunks
-    myrecording = []
-    while not q.empty():
-        myrecording.extend(q.get())
-    myrecording = np.array(myrecording)
-    filename = 'myrecording.wav'
-    sf.write(filename, myrecording, fs)
-
-    with open(filename, "rb") as file:
+    with open(myfile, "rb") as file:
         openai.api_key = API_KEY
         result = openai.Audio.transcribe("whisper-1", file, language="es")
     transcription = result['text']
-    print_colored("You:", f"{transcription}\n\n", 'user')
-    return transcription
+    state += transcription + "\n"
+    return state
