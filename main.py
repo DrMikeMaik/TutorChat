@@ -1,8 +1,8 @@
 import gradio as gr
 from chatbot import Chatbot
-from speech import text_to_speech, transcribe
+from speech import transcribe
 from utils import print_colored
-from config import INTRO, VOICE_ID
+from config import INTRO
 
 print_colored("", f"{INTRO}\n\n", 'intro')
 print("Pulsar 'Enter' para comenzar")

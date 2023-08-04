@@ -1,5 +1,6 @@
 import openai
-from config import API_KEY, CHATBOT
+from config import API_KEY, CHATBOT,  VOICE_ID
+from speech import text_to_speech
 
 
 class Chatbot:
@@ -19,5 +20,6 @@ class Chatbot:
             presence_penalty=presence_penalty,
             messages=messages_input)
         chat_response = completion['choices'][0]['message']['content']
+        text_to_speech(chat_response, VOICE_ID)
         self.conversation.append({"role": "assistant", "content": chat_response})
         return user_input + "\n" + chat_response + "\n\n"
