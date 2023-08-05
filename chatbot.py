@@ -22,4 +22,4 @@ class Chatbot:
         chat_response = completion['choices'][0]['message']['content']
         text_to_speech(chat_response, VOICE_ID)
         self.conversation.append({"role": "assistant", "content": chat_response})
-        return user_input + "\n" + chat_response + "\n\n"
+        return chat_response

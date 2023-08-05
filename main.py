@@ -11,21 +11,27 @@ input()
 chatbot = Chatbot()
 
 
-def interact(audio, state=""):
-    state = transcribe(audio, state)
-    state = chatbot.generate_response(state)
-    return state, state
+def interact(audio, chat_history):
+    user_message = transcribe(audio)
+    chat_response = chatbot.generate_response(user_message)
+    chat_history.append((user_message, chat_response))
+    return None, chat_history
 
 
-gr.Interface(
-    fn=interact,
-    inputs=[
-        gr.Audio(source="microphone", type="filepath", streaming=False),
-        "state"
-    ],
-    outputs=[
-        "textbox",
-        "state"
-    ],
-    live=False
-).launch(debug=True)
+def respond(message, chat_history):
+    bot_message = "I love you"
+    chat_history.append((message, bot_message))
+    return "", chat_history
+
+
+with gr.Blocks() as demo:
+    gradio_chatbot = gr.Chatbot()
+    clear = gr.Button("Clear")
+
+    with gr.Row():
+        voice = gr.Audio(source="microphone", type="filepath", streaming=False)
+
+        send_voice_button = gr.Button("Send Audio", interactive=True)
+        send_voice_button.click(interact, inputs=[voice, gradio_chatbot], outputs=[voice, gradio_chatbot])
+
+demo.launch(debug=True)

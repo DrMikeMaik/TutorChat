@@ -1,9 +1,5 @@
 import requests
 import openai
-import queue
-import sounddevice as sd
-import soundfile as sf
-import numpy as np
 from pathlib import Path
 from pydub import AudioSegment
 from pydub.playback import play
@@ -36,13 +32,11 @@ def text_to_speech(text, voice_id):
         print('Error:', response.text)
 
 
-def transcribe(audio, state=""):
+def transcribe(audio):
     myfile = Path(audio)
     myfile = myfile.rename(myfile.with_suffix('.wav'))
 
     with open(myfile, "rb") as file:
         openai.api_key = API_KEY
         result = openai.Audio.transcribe("whisper-1", file, language="es")
-    transcription = result['text']
-    state += transcription + "\n"
-    return state
+    return result['text']
