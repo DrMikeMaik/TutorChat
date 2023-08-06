@@ -26,12 +26,15 @@ def respond(message, chat_history):
 
 with gr.Blocks() as demo:
     gradio_chatbot = gr.Chatbot()
-    clear = gr.Button("Clear")
+    clear = gr.Button("Clear History")
 
     with gr.Row():
         voice = gr.Audio(source="microphone", type="filepath", streaming=False)
 
         send_voice_button = gr.Button("Send Audio", interactive=True)
         send_voice_button.click(interact, inputs=[voice, gradio_chatbot], outputs=[voice, gradio_chatbot])
+
+    clear.click(lambda: None, None, gradio_chatbot, queue=False).then(chatbot.clear_history, None, None, queue=False)
+
 
 demo.launch(debug=True)

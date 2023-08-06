@@ -23,3 +23,6 @@ class Chatbot:
         text_to_speech(chat_response, VOICE_ID)
         self.conversation.append({"role": "assistant", "content": chat_response})
         return chat_response
+
+    def clear_history(self):
+        self.conversation = []
