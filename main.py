@@ -12,16 +12,14 @@ chatbot = Chatbot()
 
 
 def interact(audio, chat_history):
-    user_message = transcribe(audio)
-    chat_response = chatbot.generate_response(user_message)
-    chat_history.append((user_message, chat_response))
-    return None, chat_history
+    if audio is not None:
+        user_message = transcribe(audio)
+        chat_response = chatbot.generate_response(user_message)
+        chat_history.append((user_message, chat_response))
+        return None, chat_history
+    else:
+        return None, chat_history
 
-
-def respond(message, chat_history):
-    bot_message = "I love you"
-    chat_history.append((message, bot_message))
-    return "", chat_history
 
 
 with gr.Blocks() as demo:
