@@ -14,9 +14,41 @@ Moreover, the program leverages a text-to-speech service to audibly read out the
 - Text-to-speech functionality to audibly present responses.
 - Gradio interface for ease of use
 
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- `ffmpeg`: This tool is crucial for audio processing. 
+
+  - **Windows**: You can download it from [the official FFmpeg site](https://ffmpeg.org/download.html) or use a package manager like [Chocolatey](https://chocolatey.org/).
+  
+    ```bash
+    choco install ffmpeg
+    ```
+  
+  - **macOS**: Using [Homebrew](https://brew.sh/):
+
+    ```bash
+    brew install ffmpeg
+    ```
+
+  - **Linux**: Depending on your distribution, you can use `apt`, `yum`, or another package manager:
+
+    ```bash
+    sudo apt update
+    sudo apt install ffmpeg
+    ```
+
+Ensure `ffmpeg` is correctly installed by running:
+
+```bash
+ffmpeg -version
+```
+
 ## Requirements
 
 - Python 3.9 or higher.
+- 
 - Python Libraries:
   - `numpy`
   - `gradio`
@@ -31,7 +63,7 @@ Moreover, the program leverages a text-to-speech service to audibly read out the
 
 ## Configuration
 
-1. Place your OpenAI API key in a file named `openaiapikey2.txt`.
+1. Place your OpenAI API key in a file named `openaiapikey.txt`.
 2. Place your Elevenlabs API key (for the text-to-speech feature) in a file named `elabapikey.txt`.
 3. (Optional) Modify `chatbot_{language}.txt` files if you wish to customize the initial behavior of the chatbot.
 
