@@ -28,7 +28,7 @@ class Chatbot:
         return chat_response
 
     def init_voice_and_language(self, language, voice):
-        self.chat_bot_init = CHATBOT[language]
+        self.chat_bot_init = CHATBOT[language]['text']
         self.character_voice = VOICE_ID[voice]
 
     def clear_history(self):

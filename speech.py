@@ -3,7 +3,7 @@ import openai
 from pathlib import Path
 from pydub import AudioSegment
 from pydub.playback import play
-from config import API_KEY, EL_API_KEY
+from config import API_KEY, EL_API_KEY, CHATBOT
 
 
 def text_to_speech(text, voice_id):
@@ -32,17 +32,10 @@ def text_to_speech(text, voice_id):
 
 
 def transcribe(audio, input_language):
-    myfile = Path(audio)
-    myfile = myfile.rename(myfile.with_suffix('.wav'))
+    audio_file = Path(audio)
+    audio_file = audio_file.rename(audio_file.with_suffix('.wav'))
 
-    if input_language == "French":
-        lang = "fr"
-    elif input_language == "German":
-        lang = "de"
-    else:
-        lang = "es"
-
-    with open(myfile, "rb") as file:
+    with open(audio_file, "rb") as file:
         openai.api_key = API_KEY
-        result = openai.Audio.transcribe("whisper-1", file, language=lang)
+        result = openai.Audio.transcribe("whisper-1", file, language=CHATBOT[input_language]['lang'])
     return result['text']
