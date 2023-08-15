@@ -20,7 +20,8 @@ Before you begin, ensure you have the following installed:
 
 - `ffmpeg`: This tool is crucial for audio processing. 
 
-  - **Windows**: You can download it from [the official FFmpeg site](https://ffmpeg.org/download.html) or use a package manager like [Chocolatey](https://chocolatey.org/).
+  - **Windows**: You can download it from [the official FFmpeg site](https://ffmpeg.org/download.html) 
+    or use a package manager like [Chocolatey](https://chocolatey.org/).
   
     ```bash
     choco install ffmpeg
@@ -69,7 +70,7 @@ ffmpeg -version
 
 ## Usage
 
-1. Run the script with `python <script_name>.py`.
+1. Run the script with `python main.py`.
 2. Once executed, the Gradio interface will be accessible via your local browser at: http://127.0.0.1:7860/
 3. A Gradio interface will pop up, presenting a user-friendly way to interact with the chatbot.
 4. Choose your preferred language for the conversation.

@@ -12,5 +12,6 @@ VOICE_ID = {
 CHATBOT = {
     'Spanish': {'text': './chatbot_languages/chatbot_es.txt', 'lang': 'es'},
     'French': {'text': './chatbot_languages/chatbot_fr.txt', 'lang': 'fr'},
-    'German': {'text': './chatbot_languages/chatbot_de.txt', 'lang': 'de'}
+    'German': {'text': './chatbot_languages/chatbot_de.txt', 'lang': 'de'},
+    'Polish': {'text': './chatbot_languages/chatbot_pl.txt', 'lang': 'pl'}
 }

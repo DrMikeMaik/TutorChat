@@ -34,7 +34,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
                 # Choose your parameters.
                 """
             )
-            language_choice = gr.Dropdown(["Spanish", "French", "German"],
+            language_choice = gr.Dropdown(["Spanish", "French", "German", "Polish"],
                                           type="value", value="French", label="Choose a language")
 
             voice_choice = gr.Dropdown(["Rachel", "Dave", "Charlie", "Elli"],
