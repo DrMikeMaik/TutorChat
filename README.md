@@ -1,9 +1,8 @@
 # TutorChat README
 
 ## Demo
-<video width="320" height="240" controls>
-  <source src="assets/videos/ChatDemo.mp4" type="video/mp4">
-</video>
+[![Watch the demo video](https://img.youtube.com/vi/SeckRJH2uBs/0.jpg)](https://youtu.be/SeckRJH2uBs)
+
 
 ## Description
 
