@@ -1,5 +1,10 @@
 # TutorChat README
 
+## Demo
+<video width="320" height="240" controls>
+  <source src="assets/videos/ChatDemo.mp4" type="video/mp4">
+</video>
+
 ## Description
 
 A language conversation assistant is a tool that allows users to interact with a language model. 

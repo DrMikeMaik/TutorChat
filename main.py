@@ -43,6 +43,9 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
             # level_choice = gr.Dropdown(["A1", "A2", "B1", "B2", "C1", "C2"],
             #                            type="value", value="A2", label="Choose a level")
 
+            btn = gr.Button("Move to Chat")
+            btn.click(change_tab, None, tabs)
+
         with gr.TabItem("Chat", id=1):
 
             gr.Markdown(
@@ -64,9 +67,5 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
                                         )
 
             clear.click(lambda: None, None, gradio_chatbot).then(chatbot.clear_history, None, None)
-
-    btn = gr.Button("Move to Chat")
-    btn.click(change_tab, None, tabs)
-
 
 demo.launch(debug=True)
