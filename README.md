@@ -1,7 +1,7 @@
 # TutorChat README
 
 ## Demo
-[![Watch the demo video](https://img.youtube.com/vi/SeckRJH2uBs/0.jpg)](https://youtu.be/SeckRJH2uBs)
+See how the Gradio app work. [Watch the demo video.](https://youtu.be/SeckRJH2uBs)
 
 
 ## Description
